@@ -1,20 +1,18 @@
-namespace SharpArchTemplate.Infrastructure.NHibernateMaps
+﻿namespace SharpArchTemplate.Infrastructure.NHibernateMaps
 {
     #region Using Directives
 
     using System;
-    using System.Linq;
 
     using Conventions;
 
     using Domain;
 
-    using FluentNHibernate;
     using FluentNHibernate.Automapping;
     using FluentNHibernate.Conventions;
 
-    using SharpArch.Core.DomainModel;
-    using SharpArch.Data.NHibernate.FluentNHibernate;
+    using SharpArch.Domain.DomainModel;
+    using SharpArch.NHibernate.FluentNHibernate;
 
     #endregion
 

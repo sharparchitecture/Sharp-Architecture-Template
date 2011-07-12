@@ -1,4 +1,4 @@
-namespace SharpArchTemplate.Infrastructure.NHibernateMaps.Conventions
+﻿namespace SharpArchTemplate.Infrastructure.NHibernateMaps.Conventions
 {
     #region Using Directives
 

@@ -63,24 +63,31 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FluentNHibernate, Version=1.0.0.593, Culture=neutral, PublicKeyToken=8aa435e3cb308880, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ReferencedAssemblies\NHibernate\FluentNHibernate.dll</HintPath>
+    <Reference Include="Castle.Core">
+      <HintPath>..\..\Packages\Castle.Core.2.5.2\lib\NET35\Castle.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Inflector.Net, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\..\Packages\FluentNHibernate.1.2.0.712\lib\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\..\Packages\Iesi.Collections.3.1.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="Inflector.Net">
       <HintPath>..\..\ReferencedAssemblies\NHibernate\Inflector.Net.dll</HintPath>
     </Reference>
-    <Reference Include="NHibernate, Version=2.1.0.2001, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ReferencedAssemblies\NHibernate\NHibernate.dll</HintPath>
+    <Reference Include="NHibernate">
+      <HintPath>..\..\Packages\NHibernate.3.1.0.4000\lib\Net35\NHibernate.dll</HintPath>
     </Reference>
-    <Reference Include="SharpArch">
-      <HintPath>..\..\ReferencedAssemblies\SharpArchitecture\SharpArch.dll</HintPath>
+    <Reference Include="NHibernate.ByteCode.Castle">
+      <HintPath>..\..\Packages\NHibernate.Castle.3.1.0.4000\lib\Net35\NHibernate.ByteCode.Castle.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpArch.Domain">
+      <HintPath>..\..\ReferencedAssemblies\SharpArchitecture\SharpArch.Domain.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpArch.NHibernate">
+      <HintPath>..\..\ReferencedAssemblies\SharpArchitecture\SharpArch.NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.Composition" />
-    <Reference Include="System.configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -128,6 +135,12 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Queries\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

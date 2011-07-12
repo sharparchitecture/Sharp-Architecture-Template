@@ -63,17 +63,20 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SharpArch">
-      <HintPath>..\..\ReferencedAssemblies\SharpArchitecture\SharpArch.dll</HintPath>
+    <Reference Include="SharpArch.Domain">
+      <HintPath>..\..\ReferencedAssemblies\SharpArchitecture\SharpArch.Domain.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpArch.NHibernate">
+      <HintPath>..\..\ReferencedAssemblies\SharpArchitecture\SharpArch.NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -88,6 +91,10 @@
     <ProjectReference Include="..\SharpArchTemplate.Domain\SharpArchTemplate.Domain.csproj">
       <Project>{8DEF56CD-601E-443C-9DCE-C4EC54C0B6A6}</Project>
       <Name>SharpArchTemplate.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharpArchTemplate.Infrastructure\SharpArchTemplate.Infrastructure.csproj">
+      <Project>{9544D94B-9B6E-4B61-8A09-88382205BF86}</Project>
+      <Name>SharpArchTemplate.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -106,6 +113,10 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CommandHandlers\" />
+    <Folder Include="Commands\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
