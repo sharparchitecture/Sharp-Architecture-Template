@@ -34,7 +34,7 @@ namespace SharpArchTemplate.Web.Mvc.CastleWindsor
             container.Register(
                 AllTypes
                     .FromAssemblyNamed("SharpArchTemplate.Infrastructure")
-                    .Pick()
+                    .BasedOn(typeof(IRepositoryWithTypedId<,>))
                     .WithService.FirstNonGenericCoreInterface("SharpArchTemplate.Domain"));
         }
 
