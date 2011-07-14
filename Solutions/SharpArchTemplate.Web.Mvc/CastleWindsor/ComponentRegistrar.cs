@@ -80,6 +80,11 @@ namespace SharpArchTemplate.Web.Mvc.CastleWindsor
                 AllTypes.FromAssemblyNamed("SharpArchTemplate.Web.Mvc")
                     .BasedOn<NHibernateQuery>()
                     .WithService.FirstInterface());
+
+            container.Register(
+                AllTypes.FromAssemblyNamed("SharpArchCookbook.Infrastructure")
+                    .BasedOn(typeof(NHibernateQuery<>))
+                    .WithService.DefaultInterface());
         }
 
         private static void AddCommandsTo(IWindsorContainer container)
