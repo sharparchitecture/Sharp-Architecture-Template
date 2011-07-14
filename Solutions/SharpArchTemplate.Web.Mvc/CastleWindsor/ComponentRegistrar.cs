@@ -78,7 +78,7 @@ namespace SharpArchTemplate.Web.Mvc.CastleWindsor
         {
             container.Register(
                 AllTypes.FromAssemblyNamed("SharpArchTemplate.Web.Mvc")
-                    .Pick()
+                    .BasedOn<NHibernateQuery>()
                     .WithService.FirstInterface());
         }
 
