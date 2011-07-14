@@ -5,6 +5,7 @@ namespace SharpArchTemplate.Web.Mvc.CastleWindsor
     using Castle.MicroKernel.Registration;
     using Castle.Windsor;
 
+    using SharpArch.Domain.Commands;
     using SharpArch.Domain.PersistenceSupport;
     using SharpArch.NHibernate;
     using SharpArch.NHibernate.Contracts.Repositories;
@@ -17,7 +18,7 @@ namespace SharpArchTemplate.Web.Mvc.CastleWindsor
             AddCustomRepositoriesTo(container);
             AddQueryObjectsTo(container);
             AddTasksTo(container);
-            AddCommandsTo(container);
+            AddCommandHandlersTo(container);
         }
 
         private static void AddTasksTo(IWindsorContainer container)
@@ -87,11 +88,11 @@ namespace SharpArchTemplate.Web.Mvc.CastleWindsor
                     .WithService.DefaultInterface());
         }
 
-        private static void AddCommandsTo(IWindsorContainer container)
+        private static void AddCommandHandlersTo(IWindsorContainer container)
         {
             container.Register(
-                AllTypes.FromAssemblyNamed("SharpArchTemplate.Tasks")
-                    .Pick()
+                AllTypes.FromAssemblyNamed("SharpArchCookbook.Tasks")
+                    .BasedOn(typeof(ICommandHandler<>))
                     .WithService.FirstInterface());
         }
     }
