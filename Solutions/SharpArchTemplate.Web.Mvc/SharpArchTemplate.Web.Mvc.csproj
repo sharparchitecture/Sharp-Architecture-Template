@@ -147,13 +147,12 @@
   <ItemGroup>
     <Content Include="Content\img\sharp_arch.jpg" />
     <Content Include="Content\img\sharp_arch_small.gif" />
-    <Content Include="Content\js\jquery-1.6.1.min.js" />
-    <Content Include="Content\js\modernizr-1.7.min.js" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
-    <Content Include="Content\js\jquery-1.6.1-vsdoc.js" />
-    <Content Include="Content\js\jquery-1.6.1.js" />
-    <Content Include="Content\js\modernizr-1.7.js" />
+    <Content Include="Content\js\jquery-1.6.3-vsdoc.js" />
+    <Content Include="Content\js\jquery-1.6.3.js" />
+    <Content Include="Content\js\jquery-1.6.3.min.js" />
+    <Content Include="Content\js\modernizr-2.0.6-development-only.js" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
