@@ -32,49 +32,48 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Castle.Core">
-      <HintPath>..\..\Packages\Castle.Core.2.5.2\lib\SL4\Castle.Core.dll</HintPath>
+      <HintPath>..\..\Packages\Castle.Core.2.5.2\lib\NET35\Castle.Core.dll</HintPath>
     </Reference>
     <Reference Include="Castle.Windsor">
-      <HintPath>..\..\Packages\Castle.Windsor.2.5.3\lib\NET40\Castle.Windsor.dll</HintPath>
+      <HintPath>..\..\Packages\Castle.Windsor.2.5.4\lib\net40\Castle.Windsor.dll</HintPath>
     </Reference>
     <Reference Include="CommonServiceLocator.WindsorAdapter">
       <HintPath>..\..\Packages\CommonServiceLocator.WindsorAdapter.1.0\lib\NET35\CommonServiceLocator.WindsorAdapter.dll</HintPath>
     </Reference>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\..\Packages\FluentNHibernate.1.3.0.717\lib\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\..\Packages\Iesi.Collections.3.2.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation">
       <HintPath>..\..\Packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\Packages\Newtonsoft.Json.3.5.8\lib\35\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="NHibernate">
-      <HintPath>..\..\ReferencedAssemblies\NHibernate\NHibernate.dll</HintPath>
+      <HintPath>..\..\Packages\NHibernate.3.2.0.4000\lib\Net35\NHibernate.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.framework, Version=2.5.10.11092, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <HintPath>..\..\Packages\NUnit.2.5.10.11092\lib\nunit.framework.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.mocks, Version=2.5.10.11092, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <HintPath>..\..\Packages\NUnit.2.5.10.11092\lib\nunit.mocks.dll</HintPath>
-    </Reference>
-    <Reference Include="pnunit.framework">
-      <HintPath>..\..\Packages\NUnit.2.5.10.11092\lib\pnunit.framework.dll</HintPath>
+    <Reference Include="Rhino.Mocks">
+      <HintPath>..\..\Packages\RhinoMocks.3.6\lib\Rhino.Mocks.dll</HintPath>
     </Reference>
     <Reference Include="SharpArch.Domain">
-      <HintPath>..\..\ReferencedAssemblies\SharpArchitecture\SharpArch.Domain.dll</HintPath>
+      <HintPath>..\..\Packages\SharpArch.Domain.2.0.0.601\lib\NET40\SharpArch.Domain.dll</HintPath>
     </Reference>
     <Reference Include="SharpArch.NHibernate">
-      <HintPath>..\..\ReferencedAssemblies\SharpArchitecture\SharpArch.NHibernate.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpArch.Testing">
-      <HintPath>..\..\ReferencedAssemblies\SharpArchitecture\SharpArch.Testing.dll</HintPath>
+      <HintPath>..\..\Packages\SharpArch.NHibernate.2.0.0.601\lib\NET40\SharpArch.NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="SharpArch.Testing.NUnit">
-      <HintPath>..\..\ReferencedAssemblies\SharpArchitecture\SharpArch.Testing.NUnit.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpArch.Tests">
-      <HintPath>..\..\ReferencedAssemblies\SharpArchitecture\SharpArch.Tests.dll</HintPath>
+      <HintPath>..\..\Packages\SharpArch.Testing.NUnit.2.0.0.601\lib\NET40\SharpArch.Testing.NUnit.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite">
       <HintPath>..\..\Packages\System.Data.SQLite.1.0.66.1\lib\System.Data.SQLite.DLL</HintPath>
     </Reference>
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
