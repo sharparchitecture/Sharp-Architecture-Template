@@ -10,7 +10,7 @@
 
     public class ServiceLocatorInitializer
     {
-        public static void Init() 
+        public static void Init()
         {
             IWindsorContainer container = new WindsorContainer();
 
@@ -19,6 +19,12 @@
                         .For(typeof(IEntityDuplicateChecker))
                         .ImplementedBy(typeof(EntityDuplicateChecker))
                         .Named("entityDuplicateChecker"));
+
+            container.Register(
+                    Component
+                        .For(typeof(ISessionFactoryKeyProvider))
+                        .ImplementedBy(typeof(DefaultSessionFactoryKeyProvider))
+                        .Named("sessionFactoryKeyProvider"));
 
             ServiceLocator.SetLocatorProvider(() => new WindsorServiceLocator(container));
         }
