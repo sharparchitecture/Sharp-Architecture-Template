@@ -87,11 +87,16 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceLocatorInitializer.cs" />
+    <Compile Include="SharpArchTemplate.Data\NHibernateMaps\MappingIntegrationTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SharpArchTemplate.Domain\SharpArchTemplate.Domain.csproj">
       <Project>{8DEF56CD-601E-443C-9DCE-C4EC54C0B6A6}</Project>
       <Name>SharpArchTemplate.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharpArchTemplate.Infrastructure\SharpArchTemplate.Infrastructure.csproj">
+      <Project>{9544D94B-9B6E-4B61-8A09-88382205BF86}</Project>
+      <Name>SharpArchTemplate.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\SharpArchTemplate.Web.Mvc\SharpArchTemplate.Web.Mvc.csproj">
       <Project>{6F92992D-8D75-4BA8-87C3-146581235054}</Project>
