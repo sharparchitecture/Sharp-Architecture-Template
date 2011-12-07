@@ -64,23 +64,14 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Machine.Fakes">
-      <HintPath>..\..\Packages\Machine.Fakes.0.2.6\lib\Machine.Fakes.dll</HintPath>
-    </Reference>
-    <Reference Include="Machine.Fakes.Adapters.RhinoMocks">
-      <HintPath>..\..\Packages\Machine.Fakes.RhinoMocks.0.2.6\lib\Machine.Fakes.Adapters.RhinoMocks.dll</HintPath>
-    </Reference>
     <Reference Include="Machine.Specifications">
       <HintPath>..\..\Packages\Machine.Specifications.0.4.24.0\lib\Machine.Specifications.dll</HintPath>
     </Reference>
-    <Reference Include="Machine.Specifications.AutoMocking">
-      <HintPath>..\..\Packages\Machine.Specifications.AutoMocking.0.1.4.0\lib\Machine.Specifications.AutoMocking.dll</HintPath>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\Packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
-    <Reference Include="Machine.Specifications.Mvc">
-      <HintPath>..\..\Packages\Machine.Specifications.Mvc.1.0.2.0\lib\Machine.Specifications.Mvc.dll</HintPath>
-    </Reference>
-    <Reference Include="Moq">
-      <HintPath>..\..\Packages\Moq.4.0.10827\lib\NET40\Moq.dll</HintPath>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\Packages\Newtonsoft.Json.3.5.8\lib\35\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework, Version=2.5.10.11092, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -90,16 +81,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Packages\NUnit.2.5.10.11092\lib\nunit.mocks.dll</HintPath>
     </Reference>
-    <Reference Include="NUnit.Specifications.AutoMocking">
-      <HintPath>..\..\Packages\Machine.Specifications.AutoMocking.0.1.4.0\lib\NUnit.Specifications.AutoMocking.dll</HintPath>
-    </Reference>
     <Reference Include="pnunit.framework">
       <HintPath>..\..\Packages\NUnit.2.5.10.11092\lib\pnunit.framework.dll</HintPath>
     </Reference>
-    <Reference Include="Rhino.Mocks">
-      <HintPath>..\..\Packages\RhinoMocks.3.6\lib\Rhino.Mocks.dll</HintPath>
+    <Reference Include="SharpArch.Domain, Version=2.0.0.601, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\Packages\SharpArch.Domain.2.0.0.601\lib\NET40\SharpArch.Domain.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
