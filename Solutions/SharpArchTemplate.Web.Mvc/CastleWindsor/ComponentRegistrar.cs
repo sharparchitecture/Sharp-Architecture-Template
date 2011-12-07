@@ -1,6 +1,4 @@
-﻿using SharpArch.Web.Mvc.Castle;
-
-namespace SharpArchTemplate.Web.Mvc.CastleWindsor
+﻿namespace SharpArchTemplate.Web.Mvc.CastleWindsor
 {
     using Castle.MicroKernel.Registration;
     using Castle.Windsor;
@@ -9,6 +7,7 @@ namespace SharpArchTemplate.Web.Mvc.CastleWindsor
     using SharpArch.Domain.PersistenceSupport;
     using SharpArch.NHibernate;
     using SharpArch.NHibernate.Contracts.Repositories;
+    using SharpArch.Web.Mvc.Castle;
 
     public class ComponentRegistrar
     {
@@ -64,10 +63,9 @@ namespace SharpArchTemplate.Web.Mvc.CastleWindsor
                         .Named("sessionFactoryKeyProvider"));
 
             container.Register(
-                    Component.For(typeof(SharpArch.Domain.Commands.ICommandProcessor))
-                        .ImplementedBy(typeof(SharpArch.Domain.Commands.CommandProcessor))
+                    Component.For(typeof(ICommandProcessor))
+                        .ImplementedBy(typeof(CommandProcessor))
                         .Named("commandProcessor"));
-                
         }
 
         private static void AddQueryObjectsTo(IWindsorContainer container) 
