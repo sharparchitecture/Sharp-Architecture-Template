@@ -73,12 +73,12 @@
             container.Register(
                 AllTypes.FromAssemblyNamed("SharpArchTemplate.Web.Mvc")
                     .BasedOn<NHibernateQuery>()
-                    .WithService.FirstInterface());
+                    .WithService.DefaultInterfaces());
 
             container.Register(
                 AllTypes.FromAssemblyNamed("SharpArchTemplate.Infrastructure")
                     .BasedOn(typeof(NHibernateQuery))
-                    .WithService.DefaultInterface());
+                    .WithService.DefaultInterfaces());
         }
 
         private static void AddCommandHandlersTo(IWindsorContainer container)
