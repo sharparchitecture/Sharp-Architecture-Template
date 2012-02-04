@@ -15,7 +15,9 @@
     using Controllers;
     
     using Infrastructure.NHibernateMaps;
-    
+
+    using SharpArch.Domain.Events;
+
     using log4net.Config;
     
     using Microsoft.Practices.ServiceLocation;
@@ -93,7 +95,9 @@
             container.RegisterControllers(typeof(HomeController).Assembly);
             ComponentRegistrar.AddComponentsTo(container);
 
-            ServiceLocator.SetLocatorProvider(() => new WindsorServiceLocator(container));
+            var windsorServiceLocator = new WindsorServiceLocator(container);
+            DomainEvents.ServiceLocator = windsorServiceLocator;
+            ServiceLocator.SetLocatorProvider(() => windsorServiceLocator);
         }
 
         private void InitialiseNHibernateSessions()

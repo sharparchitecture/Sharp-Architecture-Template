@@ -4,6 +4,7 @@
     using Castle.Windsor;
 
     using SharpArch.Domain.Commands;
+    using SharpArch.Domain.Events;
     using SharpArch.Domain.PersistenceSupport;
     using SharpArch.NHibernate;
     using SharpArch.NHibernate.Contracts.Repositories;
@@ -17,7 +18,7 @@
             AddCustomRepositoriesTo(container);
             AddQueryObjectsTo(container);
             AddTasksTo(container);
-            AddCommandHandlersTo(container);
+            AddHandlersTo(container);
         }
 
         private static void AddTasksTo(IWindsorContainer container)
@@ -81,11 +82,16 @@
                     .WithService.DefaultInterfaces());
         }
 
-        private static void AddCommandHandlersTo(IWindsorContainer container)
+        private static void AddHandlersTo(IWindsorContainer container)
         {
             container.Register(
                 AllTypes.FromAssemblyNamed("SharpArchTemplate.Tasks")
                     .BasedOn(typeof(ICommandHandler<>))
+                    .WithService.FirstInterface());
+
+            container.Register(
+                AllTypes.FromAssemblyNamed("SharpArchTemplate.Tasks")
+                    .BasedOn(typeof(IHandles<>))
                     .WithService.FirstInterface());
         }
     }
