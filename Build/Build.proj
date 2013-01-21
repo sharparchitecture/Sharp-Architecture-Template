@@ -1,21 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="PackageArtefacts" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-
+  
+  <PropertyGroup>
+    <VersionMajor>2</VersionMajor>
+    <VersionMinor>1</VersionMinor>
+    <VersionPatch>0</VersionPatch>
+    <VersionPreRelease>RC3</VersionPreRelease>
+  </PropertyGroup>
+  
   <PropertyGroup>
     <SolutionName>SharpArchTemplate</SolutionName>
     <SolutionsPath>$(MSBuildProjectDirectory)\..\Solutions</SolutionsPath>
     <BuildPath>$(MSBuildProjectDirectory)\..\BuildSystem</BuildPath>
-    <WebAppPath>$(SolutionsPath)\$(SolutionName).Web</WebAppPath>
+    <WebAppPath>$(SolutionsPath)\$(SolutionName).Web.Mvc</WebAppPath>
     <SolutionRoot>$(BuildPath)\..\..</SolutionRoot>
   </PropertyGroup>
 
+  <Import Project="$(BuildPath)\BuildSystem.proj" />
+  
   <ItemGroup>
-    <PackageFiles Include="$(WebAppPath)\**\*.*"
-                  Exclude="$(WebAppPath)\**\bin\**;
-                            $(WebAppPath)\**\Logs\**;
-                            $(WebAppPath)\**\obj\**;">
-      <PackageName>$(DropsPath)\$(GlobalBuildVersionNumber)\$(PackageName).Source.v$(GlobalBuildVersionNumber).zip</PackageName>
-      <WorkingDirectory>$(WebAppPath)</WorkingDirectory>
+    <PackageFiles Include="$(SolutionsPath)\**\*.*"
+                  Exclude="$(SolutionsPath)\**\bin\**;
+                            $(SolutionsPath)\**\Logs\**;
+                            $(SolutionsPath)\**\obj\**;">
+      <PackageName>$(DropsPath)\$(SemanticVersion)\$(PackageName).Source.v$(SemanticVersion).zip</PackageName>
+      <WorkingDirectory>$(SolutionsPath)</WorkingDirectory>
+      <Flatten>False</Flatten>
     </PackageFiles>
   </ItemGroup>
 
@@ -27,15 +37,12 @@
     <TemplifyPath>$(SolutionsPath)</TemplifyPath>
     <TemplifyPackageName>Sharp Architecture Template</TemplifyPackageName>
     <TemplifyPackageAuthor>Sharp Architecture Development Team</TemplifyPackageAuthor>
-    <TemplifyPackageVersion>$(GlobalBuildVersionNumber)</TemplifyPackageVersion>
+    <TemplifyPackageVersion>$(SemanticVersion)</TemplifyPackageVersion>
     <TemplifyPackageRepositoryPath>$(DropsPath)\$(GlobalBuildVersionNumber)</TemplifyPackageRepositoryPath>
   </PropertyGroup>
 
-  <Import Project="$(BuildPath)\BuildSystem.proj" />
-
   <Target Name="Build"
         DependsOnTargets="CleanSolution;
-                            UpdateAssemblyVersion;
                             BuildSolutions;" />
 
   <Target Name="PackageArtefacts"
