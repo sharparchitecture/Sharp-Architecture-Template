@@ -146,7 +146,12 @@
     <Compile Include="..\Common\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="CastleWindsor\ComponentRegistrar.cs" />
+    <Compile Include="CastleWindsor\ControllerInstaller.cs" />
+    <Compile Include="CastleWindsor\HandlerInstaller.cs" />
+    <Compile Include="CastleWindsor\QueryInstaller.cs" />
+    <Compile Include="CastleWindsor\RepositoryInstaller.cs" />
+    <Compile Include="CastleWindsor\SharpArchInstaller.cs" />
+    <Compile Include="CastleWindsor\TasksInstaller.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RouteRegistrar.cs" />
     <Compile Include="Global.asax.cs">

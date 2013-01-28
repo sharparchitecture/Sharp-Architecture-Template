@@ -8,6 +8,8 @@
     using Castle.Windsor;
 
     // SharpArchTemplate.Web.Mvc.CastleWindsor
+    using Castle.Windsor.Installer;
+
     using CastleWindsor;
 
     using CommonServiceLocator.WindsorAdapter;
@@ -51,16 +53,14 @@
             this.webSessionStorage = new WebSessionStorage(this);
         }
 
+        public static void RegisterGlobalFilters(GlobalFilterCollection filters)
+        {
+            filters.Add(new HandleErrorAttribute());
+        }
+
         protected void Application_BeginRequest(object sender, EventArgs e)
         {
             NHibernateInitializer.Instance().InitializeNHibernateOnce(this.InitialiseNHibernateSessions);
-        }
-
-        protected void Application_Error(object sender, EventArgs e) 
-        {
-            // Useful for debugging
-            Exception ex = this.Server.GetLastError();
-            var reflectionTypeLoadException = ex as ReflectionTypeLoadException;
         }
 
         protected void Application_Start()
@@ -78,6 +78,8 @@
             this.InitializeServiceLocator();
 
             AreaRegistration.RegisterAllAreas();
+
+            RegisterGlobalFilters(GlobalFilters.Filters);
             RouteRegistrar.RegisterRoutesTo(RouteTable.Routes);
         }
 
@@ -90,11 +92,10 @@
         {
             IWindsorContainer container = new WindsorContainer();
 
+            container.Install(FromAssembly.This());
+
             ControllerBuilder.Current.SetControllerFactory(new WindsorControllerFactory(container));
-
-            container.RegisterControllers(typeof(HomeController).Assembly);
-            ComponentRegistrar.AddComponentsTo(container);
-
+            
             var windsorServiceLocator = new WindsorServiceLocator(container);
             DomainEvents.ServiceLocator = windsorServiceLocator;
             ServiceLocator.SetLocatorProvider(() => windsorServiceLocator);
