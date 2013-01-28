@@ -1,16 +1,12 @@
 ﻿namespace SharpArchTemplate.Web.Mvc
 {
     using System;
-    using System.Reflection;
     using System.Web.Mvc;
     using System.Web.Routing;
 
     using Castle.Windsor;
 
-    // SharpArchTemplate.Web.Mvc.CastleWindsor
     using Castle.Windsor.Installer;
-
-    using CastleWindsor;
 
     using CommonServiceLocator.WindsorAdapter;
 
