@@ -9,7 +9,7 @@ namespace SharpArchTemplate.Web.Mvc.CastleWindsor
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
             container.Register(
-                AllTypes.FromAssemblyNamed("SharpArchTemplate.Web.Mvc")
+                Types.FromAssemblyNamed("SharpArchTemplate.Web.Mvc")
                     .InNamespace("SharpArchTemplate.Web.Mvc.Controllers.Queries", true)
                     .WithService.DefaultInterfaces());
         }

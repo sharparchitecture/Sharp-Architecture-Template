@@ -19,7 +19,7 @@ namespace SharpArchTemplate.Web.Mvc.CastleWindsor
         private static void AddCustomRepositoriesTo(IWindsorContainer container)
         {
             container.Register(
-                AllTypes.FromAssemblyNamed("SharpArchTemplate.Infrastructure")
+                Types.FromAssemblyNamed("SharpArchTemplate.Infrastructure")
                     .BasedOn(typeof(IRepositoryWithTypedId<,>))
                     .WithService.DefaultInterfaces());
         }

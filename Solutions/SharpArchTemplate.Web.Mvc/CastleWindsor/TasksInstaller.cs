@@ -9,7 +9,7 @@ namespace SharpArchTemplate.Web.Mvc.CastleWindsor
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
             container.Register(
-                AllTypes.FromAssemblyNamed("SharpArchTemplate.Tasks")
+                Types.FromAssemblyNamed("SharpArchTemplate.Tasks")
                     .Pick().Unless(t => t.Namespace.EndsWith("Handlers"))
                     .WithService.DefaultInterfaces());
         }

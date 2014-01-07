@@ -11,10 +11,10 @@ namespace SharpArchTemplate.Web.Mvc.CastleWindsor
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
             container.Register(
-                AllTypes
+                Classes
                     .FromThisAssembly()
                     .BasedOn<IController>()
-                    .Configure(c => c.Named(c.Implementation.Name))
+                    .Configure(c => c.Named(c.Implementation.Name)).LifestylePerWebRequest()
                 );
         }
     }
