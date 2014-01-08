@@ -19,3 +19,4 @@ error-*.xml
 [Pp]ackages
 Solutions/UpgradeLog.htm
 Drops
+logs/SharpArchTemplate.Web.log
