@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="All">  
+  <Target Name="PackageNuget" DependsOnTargets="CreateDrops">
+		
+	<MakeDir Directories="$(NugetWorkspace)" />
+	
+	<ItemGroup>    
+		<NugetTemplatesFiles Include="$(NugetTemplates)\**\*.*" />
+	</ItemGroup>
+
+	<Copy SourceFiles="@(NugetTemplatesFiles)" DestinationFiles="@(NugetTemplatesFiles->'$(NugetWorkspace)\%(RecursiveDir)%(Filename)%(Extension)')" />
+ 
+    <Copy SourceFiles="@(NugetPackage)" DestinationFolder="$(NugetWorkspace)\%(PackageName)\lib\NET40\" />
+	
+	<XmlUpdate      
+	  Prefix="nu"
+	  Namespace="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd"
+      XmlFileName="$(NugetWorkspace)\%(NugetPackage.PackageName)\%(NugetPackage.NuspecFile)"
+      XPath="//*/*/nu:version"
+      Value="$(SemanticVersion)" />
+	  
+    <Exec WorkingDirectory="$(DropsPath)\$(SemanticVersion)\" 
+          Command="$(ToolsPath)\nuget.exe pack $(NugetWorkspace)\%(NugetPackage.PackageName)\%(NugetPackage.NuspecFile)" />
+		  
+    <Message Text="##teamcity[publishArtifacts '$(DropsPath)\$(SemanticVersion)\%(NugetPackage.PackageName).$(SemanticVersion).nupkg']"  />
+  </Target>
+</Project>

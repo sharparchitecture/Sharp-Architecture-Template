@@ -10,32 +10,31 @@
   
   <PropertyGroup>
     <SolutionName>SharpArchTemplate</SolutionName>
-    <SolutionsPath>$(MSBuildProjectDirectory)\..\Solutions</SolutionsPath>
+    <TemplatePath>$(MSBuildProjectDirectory)\..\Template</TemplatePath>
+    <SolutionsPath>$(TemplatePath)\Solutions</SolutionsPath>
     <BuildPath>$(MSBuildProjectDirectory)\..\BuildSystem</BuildPath>
     <WebAppPath>$(SolutionsPath)\$(SolutionName).Web.Mvc</WebAppPath>
     <SolutionRoot>$(BuildPath)\..\..</SolutionRoot>
   </PropertyGroup>
 
   <Import Project="$(BuildPath)\BuildSystem.proj" />
-  
-  <ItemGroup>
-    <PackageFiles Include="$(SolutionsPath)\**\*.*"
-                  Exclude="$(SolutionsPath)\**\bin\**;
-                            $(SolutionsPath)\**\Logs\**;
-                            $(SolutionsPath)\**\obj\**;">
-      <PackageName>$(DropsPath)\$(SemanticVersion)\$(PackageName).Source.v$(SemanticVersion).zip</PackageName>
-      <WorkingDirectory>$(SolutionsPath)</WorkingDirectory>
-      <Flatten>False</Flatten>
-    </PackageFiles>
-  </ItemGroup>
 
   <ItemGroup>
     <TemplifyTokens Include="SharpArchTemplate=__NAME__" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageFiles Include="$(DropsPath)\$(SemanticVersion)\sharp-architecture-nh-template-v$(SemanticVersion).pkg;
+                            $(BuildPath)\Tools\deploy-templify-package.cmd">
+      <PackageName>$(DropsPath)\$(SemanticVersion)\SharpArch-$(SemanticVersion)-nh-templify-package.zip</PackageName>
+      <WorkingDirectory>$(SolutionsRoot)</WorkingDirectory>
+      <Flatten>True</Flatten>
+    </PackageFiles>
+  </ItemGroup>
+  
   <PropertyGroup>
-    <TemplifyPath>$(SolutionsPath)</TemplifyPath>
-    <TemplifyPackageName>Sharp Architecture Template</TemplifyPackageName>
+    <TemplifyPath>$(TemplatePath)</TemplifyPath>
+    <TemplifyPackageName>Sharp Architecture NH Template</TemplifyPackageName>
     <TemplifyPackageAuthor>Sharp Architecture Development Team</TemplifyPackageAuthor>
     <TemplifyPackageVersion>$(SemanticVersion)</TemplifyPackageVersion>
     <TemplifyPackageRepositoryPath>$(DropsPath)\$(GlobalBuildVersionNumber)</TemplifyPackageRepositoryPath>
@@ -43,12 +42,12 @@
 
   <Target Name="Build"
         DependsOnTargets="CleanSolution;
-                            BuildSolutions;" />
+                          BuildSolutions;" />
 
   <Target Name="PackageArtefacts"
-          DependsOnTargets="Build;
-                            Package;
+          DependsOnTargets="CreateDrops;
                             Templify;
+                            Package;
                             BuildSuccess" />
 
 </Project>

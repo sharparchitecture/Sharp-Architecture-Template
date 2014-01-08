@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="All">
+
+  <Target Name="UpdateAssemblyVersion">
+    <MSBuild.Community.tasks.AssemblyInfo OutputFile="$(AssemblyVersionFile)"
+                  CodeLanguage="C#"
+                  AssemblyFileVersion="$(VersionMajor).$(VersionMinor).$(VersionPatch).$(VersionBuild)"
+                  AssemblyInformationalVersion="$(SemanticVersion)"
+                  AssemblyVersion="$(VersionMajor).$(VersionMinor).0.0" />
+				  	
+    <Message Text="##teamcity[buildNumber '$(SemanticVersion)']"  />
+  </Target>
+
+</Project>

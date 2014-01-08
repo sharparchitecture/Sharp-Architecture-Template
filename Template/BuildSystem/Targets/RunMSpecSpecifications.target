@@ -1,0 +1,45 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <Choose>
+      <When Condition="('$(OutputPath)'!='')">
+      </When>
+      <!-- Running outside of the build -->
+      <Otherwise>
+        <PropertyGroup>
+          <OutputPath>bin\debug</OutputPath>
+        </PropertyGroup>
+      </Otherwise>
+    </Choose>
+
+    <Choose>
+        <When Condition="'$(IsDesktopBuild)' != 'true'">
+            <PropertyGroup>
+              <MSpecOutputType>--teamcity --html</MSpecOutputType>
+            </PropertyGroup>
+        </When>
+        <Otherwise>
+            <PropertyGroup>
+                <MSpecOutputType>--html</MSpecOutputType>
+            </PropertyGroup>
+        </Otherwise>
+    </Choose>
+    
+  <Target Name="RunMSpecSpecifications"
+          Condition="'$(RunMSpecTests)' == 'True'"
+          DependsOnTargets="CreateDrops">
+
+    <MakeDir Directories="$(SpecificationReportPath)"/>
+    
+    <PropertyGroup>
+      <MSpecOptions>--silent $(MSpecOutputType) "$(SpecificationReportPath)\Specs.html"</MSpecOptions>
+      <MSpecArgs>$(MSpecSpecificationAssemblies)</MSpecArgs>
+      <MSpecCommand>"$(ToolsPath)\Machine.Specifications\mspec-clr4.exe" $(MSpecOptions) $(MSpecArgs)</MSpecCommand>
+    </PropertyGroup>
+    
+    <Message Importance="high" Text="Running Specs with this command: $(MSpecCommand)"/>
+    
+    <Exec Command="$(MSpecCommand)" />
+  
+  </Target>
+
+</Project>

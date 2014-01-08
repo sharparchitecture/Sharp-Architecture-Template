@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="PackageArtefacts" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+      <SolutionName>SharpArchTemplate</SolutionName>
+      <PackageName>SharpArchTemplate</PackageName>      
+      <BuildPath>$(MSBuildProjectDirectory)\..\BuildSystem</BuildPath>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <SolutionsPath>$(MSBuildProjectDirectory)\..\Solutions</SolutionsPath>
+    <WebAppPath>$(SolutionsPath)\$(SolutionName).Web.Mvc</WebAppPath>
+    <SolutionRoot>$(BuildPath)\..\..</SolutionRoot>
+    <DropsPath>\..\Drops\</DropsPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <RunMSpecTests>True</RunMSpecTests>
+    <MSpecRunner>mspec-clr4.exe</MSpecRunner>
+    <MSpecSpecificationAssemblies>"$(MSBuildProjectDirectory)\..\Solutions\MSpecTests.SharpArchTemplate\Bin\Release\MSpecTests.SharpArchTemplate.dll"</MSpecSpecificationAssemblies>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AssembliesToTestWithNUnit Include="$(SolutionsPath)\SharpArchTemplate.Tests\bin\Release\SharpArchTemplate.Tests.dll;" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageFiles Include="$(WebAppPath)\**\*.*"
+                  Exclude="$(WebAppPath)\**\*.cs;
+                             $(WebAppPath)\**\*.csproj;
+                             $(WebAppPath)\**\*.user;
+                             $(WebAppPath)\**\*.vspscc;
+                             $(WebAppPath)\**\bin\*.pdb;
+                             $(WebAppPath)\**\*.xml;
+                             $(WebAppPath)\**\Code\**;
+                             $(WebAppPath)\**\Initialisers\**;
+                             $(WebAppPath)\**\obj\**;
+                             $(WebAppPath)\**\Properties\**;
+                             $(WebAppPath)\**\Registrars\**;
+                             $(WebAppPath)\**\ResourceFiles\**;">
+
+      <PackageName>$(DropsPath)\$(SemanticVersion)\$(PackageName).v$(SemanticVersion).zip</PackageName>
+      <WorkingDirectory>$(WebAppPath)</WorkingDirectory>
+      <Flatten>False</Flatten>
+    </PackageFiles>
+
+   <PackageFiles Include="$(SpecificationReportPath)\**\*.*">
+      <PackageName>$(DropsPath)\$(SemanticVersion)\$(PackageName).Specifications.v$(SemanticVersion).zip</PackageName>
+      <WorkingDirectory>$(SpecificationReportPath)</WorkingDirectory>
+      <Flatten>False</Flatten>
+    </PackageFiles>    
+  </ItemGroup>
+
+
+  <Import Project="$(BuildPath)\BuildSystem.proj" />
+
+  <PropertyGroup>
+      <AssemblyVersionFile>$(SolutionsPath)\Common\AssemblyVersion.cs</AssemblyVersionFile>
+  </PropertyGroup>
+  
+  
+  <Target Name="Build"
+        DependsOnTargets="CleanSolution;                            
+                          UpdateAssemblyVersion;
+                          BuildSolutions;" />
+
+  <Target Name="RunTests"
+          DependsOnTargets="Build;
+                            RunNUnitTests;" />
+                                                        
+  <Target Name="RunSpecs"
+      DependsOnTargets="Build;
+                        RunMSpecSpecifications;" />
+
+  
+  <Target Name="PackageArtefacts"
+          DependsOnTargets="Build;
+                            RunTests;
+                            RunSpecs;                
+                            Package;
+                            BuildSuccess" />
+</Project>

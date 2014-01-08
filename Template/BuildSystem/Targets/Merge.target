@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="All">
+
+  <Target Name="Merge"
+          DependsOnTargets="CreateDrops">
+
+    <ILMerge ToolPath="$(ToolsPath)"
+             InputAssemblies="@(MergeFiles)"
+             OutputFile="%(MergedAssembly)"
+             LogFile="$(SolutionRoot)\ILMerge.log"
+             DebugInfo="true" />
+
+  </Target>
+
+</Project>

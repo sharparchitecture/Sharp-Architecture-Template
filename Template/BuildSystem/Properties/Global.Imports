@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="All">
+
+  <!-- Import Project Properties -->
+  <Import Project="$(PropertiesPath)\Build.properties" />
+  <Import Project="$(PropertiesPath)\Common.properties" />
+  <Import Project="$(PropertiesPath)\CPUArchitecture.properties" />
+
+  <!-- Import Custom MSBuild Tasks -->
+  <Import Project="$(TasksPath)\Microsoft.Sdc.Common.tasks" />
+  <Import Project="$(TasksPath)\MSBuild.Community.tasks" />
+  <Import Project="$(TasksPath)\MSBuild.Extended.tasks" />
+  <Import Project="$(TasksPath)\Endjin.Templify.MSBuild.tasks" />
+
+  <!-- Import Custom Project Targets -->
+  <Import Project="$(TargetsPath)\BuildSolutions.target" />
+  <Import Project="$(TargetsPath)\BuildSuccess.target" />
+  <Import Project="$(TargetsPath)\CleanSolution.target" />
+  <Import Project="$(TargetsPath)\CreateDrops.target" />
+  <Import Project="$(TargetsPath)\Merge.target" />
+  <Import Project="$(TargetsPath)\Package.target" />
+  <Import Project="$(TargetsPath)\Templify.target" />
+  <Import Project="$(TargetsPath)\RunMSpecSpecifications.target" />
+  <Import Project="$(TargetsPath)\RunNUnitTests.target" />
+  <Import Project="$(TargetsPath)\UpdateAssemblyVersion.target" />
+  <Import Project="$(TargetsPath)\Nuget.target" />
+
+</Project>
