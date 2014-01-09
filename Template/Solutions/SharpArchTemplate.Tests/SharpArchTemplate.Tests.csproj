@@ -63,13 +63,13 @@
       <HintPath>..\..\Packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="SharpArch.Domain">
-      <HintPath>..\..\Packages\SharpArch.Domain.2.1.1\lib\NET40\SharpArch.Domain.dll</HintPath>
+      <HintPath>..\..\Packages\SharpArch.Domain.2.1.2\lib\NET40\SharpArch.Domain.dll</HintPath>
     </Reference>
     <Reference Include="SharpArch.NHibernate">
-      <HintPath>..\..\Packages\SharpArch.NHibernate.2.1.1\lib\NET40\SharpArch.NHibernate.dll</HintPath>
+      <HintPath>..\..\Packages\SharpArch.NHibernate.2.1.2\lib\NET40\SharpArch.NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="SharpArch.Testing.NUnit">
-      <HintPath>..\..\Packages\SharpArch.Testing.NUnit.2.1.1\lib\NET40\SharpArch.Testing.NUnit.dll</HintPath>
+      <HintPath>..\..\Packages\SharpArch.Testing.NUnit.2.1.2\lib\NET40\SharpArch.Testing.NUnit.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
