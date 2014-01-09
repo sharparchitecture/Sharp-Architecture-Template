@@ -11,7 +11,9 @@ namespace SharpArchTemplate.Web.Mvc.CastleWindsor
             container.Register(
                 Types.FromAssemblyNamed("SharpArchTemplate.Tasks")
                     .Pick().Unless(t => t.Namespace.EndsWith("Handlers"))
-                    .WithService.DefaultInterfaces());
+                    .WithService.DefaultInterfaces()
+                    .Configure(c => c.LifestylePerWebRequest())
+                );
         }
     }
 }

@@ -14,17 +14,17 @@ namespace SharpArchTemplate.Web.Mvc.CastleWindsor
             container.Register(
                 Types.FromAssemblyNamed("SharpArchTemplate.Tasks")
                     .BasedOn(typeof(ICommandHandler<>))
-                    .WithService.FirstInterface());
+                    .WithService.FirstInterface().LifestylePerWebRequest());
 
             container.Register(
                 Types.FromAssemblyNamed("SharpArchTemplate.Tasks")
                     .BasedOn(typeof(ICommandHandler<,>))
-                    .WithService.FirstInterface());
+                    .WithService.FirstInterface().LifestylePerWebRequest());
 
             container.Register(
                 Types.FromAssemblyNamed("SharpArchTemplate.Tasks")
                     .BasedOn(typeof(IHandles<>))
-                    .WithService.FirstInterface());
+                    .WithService.FirstInterface().LifestylePerWebRequest());
         }
     }
 }

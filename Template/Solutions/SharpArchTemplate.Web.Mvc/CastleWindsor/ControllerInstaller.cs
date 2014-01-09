@@ -14,7 +14,7 @@ namespace SharpArchTemplate.Web.Mvc.CastleWindsor
                 Classes
                     .FromThisAssembly()
                     .BasedOn<IController>()
-                    .Configure(c => c.Named(c.Implementation.Name)).LifestylePerWebRequest()
+                    .Configure(c => c.Named(c.Implementation.Name)).LifestyleTransient()
                 );
         }
     }

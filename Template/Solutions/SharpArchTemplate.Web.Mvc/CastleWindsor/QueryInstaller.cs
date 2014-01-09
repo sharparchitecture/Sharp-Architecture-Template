@@ -11,9 +11,8 @@ namespace SharpArchTemplate.Web.Mvc.CastleWindsor
             container.Register(
                 Types.FromAssemblyNamed("SharpArchTemplate.Web.Mvc")
                     .InNamespace("SharpArchTemplate.Web.Mvc.Controllers.Queries", true)
-                    .WithService.DefaultInterfaces());
+                    .WithService.DefaultInterfaces()
+                    .LifestylePerWebRequest());
         }
-
-
     }
 }

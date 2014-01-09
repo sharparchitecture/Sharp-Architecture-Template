@@ -21,7 +21,7 @@ namespace SharpArchTemplate.Web.Mvc.CastleWindsor
             container.Register(
                 Types.FromAssemblyNamed("SharpArchTemplate.Infrastructure")
                     .BasedOn(typeof(IRepositoryWithTypedId<,>))
-                    .WithService.DefaultInterfaces());
+                    .WithService.DefaultInterfaces().LifestylePerWebRequest());
         }
 
         private static void AddGenericRepositoriesTo(IWindsorContainer container)
@@ -31,14 +31,14 @@ namespace SharpArchTemplate.Web.Mvc.CastleWindsor
                     .ImplementedBy(typeof(LinqRepository<>))
                     .Named("nhibernateRepositoryType")
                     .Forward(typeof(IRepository<>), typeof(ILinqRepository<>))
-                    );
+                    .LifestylePerWebRequest());
             
             container.Register(
                 Component.For(typeof(INHibernateRepositoryWithTypedId<,>))
                     .ImplementedBy(typeof(LinqRepositoryWithTypedId<,>))
                     .Named("nhibernateRepositoryWithTypedId")
                     .Forward(typeof(IRepositoryWithTypedId<,>) , typeof(ILinqRepositoryWithTypedId<,>))
-                    );
+                    .LifestylePerWebRequest());
         }
     }
 }
