@@ -12,17 +12,17 @@ namespace SharpArchTemplate.Web.Mvc.CastleWindsor
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
             container.Register(
-                Types.FromAssemblyNamed("SharpArchTemplate.Tasks")
+                Classes.FromAssemblyNamed("SharpArchTemplate.Tasks")
                     .BasedOn(typeof(ICommandHandler<>))
                     .WithService.FirstInterface().LifestylePerWebRequest());
 
             container.Register(
-                Types.FromAssemblyNamed("SharpArchTemplate.Tasks")
+                Classes.FromAssemblyNamed("SharpArchTemplate.Tasks")
                     .BasedOn(typeof(ICommandHandler<,>))
                     .WithService.FirstInterface().LifestylePerWebRequest());
 
             container.Register(
-                Types.FromAssemblyNamed("SharpArchTemplate.Tasks")
+                Classes.FromAssemblyNamed("SharpArchTemplate.Tasks")
                     .BasedOn(typeof(IHandles<>))
                     .WithService.FirstInterface().LifestylePerWebRequest());
         }

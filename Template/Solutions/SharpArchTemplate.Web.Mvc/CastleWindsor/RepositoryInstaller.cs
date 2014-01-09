@@ -19,7 +19,7 @@ namespace SharpArchTemplate.Web.Mvc.CastleWindsor
         private static void AddCustomRepositoriesTo(IWindsorContainer container)
         {
             container.Register(
-                Types.FromAssemblyNamed("SharpArchTemplate.Infrastructure")
+                Classes.FromAssemblyNamed("SharpArchTemplate.Infrastructure")
                     .BasedOn(typeof(IRepositoryWithTypedId<,>))
                     .WithService.DefaultInterfaces().LifestylePerWebRequest());
         }
@@ -28,9 +28,9 @@ namespace SharpArchTemplate.Web.Mvc.CastleWindsor
         {
             container.Register(
                 Component.For(typeof(INHibernateRepository<>))
-                    .ImplementedBy(typeof(LinqRepository<>))
+                    .ImplementedBy(typeof(NHibernateRepository<>))
                     .Named("nhibernateRepositoryType")
-                    .Forward(typeof(IRepository<>), typeof(ILinqRepository<>))
+                    .Forward(typeof(IRepository<>))
                     .LifestylePerWebRequest());
             
             container.Register(
@@ -39,6 +39,13 @@ namespace SharpArchTemplate.Web.Mvc.CastleWindsor
                     .Named("nhibernateRepositoryWithTypedId")
                     .Forward(typeof(IRepositoryWithTypedId<,>) , typeof(ILinqRepositoryWithTypedId<,>))
                     .LifestylePerWebRequest());
+            
+	        container.Register(
+                    Component.For(typeof(ILinqRepository<>))
+                        .ImplementedBy(typeof(LinqRepository<>))
+                        .Named("nhibernateLinqRepositoryType")
+                        .LifestylePerWebRequest());
+            
         }
     }
 }
